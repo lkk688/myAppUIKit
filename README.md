@@ -8,4 +8,4 @@ project archive link: [myAppUIKit-1 start.zip](https://drive.google.com/file/d/1
 
 ## Step2
 Description: finished uiscrollview with the stackview, and finished the automatic keyboard movement when entering
-project archive link: [myAppUIKit-2 finishedtextscrollview](https://drive.google.com/file/d/1cVhRfShYxSvtfuV4x7iubLqYPcyaWoRh/view?usp=sharing)
+project archive link: [myAppUIKit-2 finishedtextscrollview.zip](https://drive.google.com/file/d/1cVhRfShYxSvtfuV4x7iubLqYPcyaWoRh/view?usp=sharing)
