@@ -18,6 +18,7 @@
 		6293474425C7D0CE00D2FAB4 /* UITextViewPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6293474325C7D0CE00D2FAB4 /* UITextViewPlaceholder.swift */; };
 		6293474C25C7E27800D2FAB4 /* UITextView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6293474B25C7E27800D2FAB4 /* UITextView+Additions.swift */; };
 		6293477A25CA052600D2FAB4 /* ScrollPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6293477925CA052600D2FAB4 /* ScrollPostViewController.swift */; };
+		62CC496225CF49920050B7F3 /* NewsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CC496125CF49920050B7F3 /* NewsData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		6293474325C7D0CE00D2FAB4 /* UITextViewPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewPlaceholder.swift; sourceTree = "<group>"; };
 		6293474B25C7E27800D2FAB4 /* UITextView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Additions.swift"; sourceTree = "<group>"; };
 		6293477925CA052600D2FAB4 /* ScrollPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScrollPostViewController.swift; path = MyViewController/ScrollPostViewController.swift; sourceTree = "<group>"; };
+		62CC496125CF49920050B7F3 /* NewsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 		624D3DD325C74D40006D5837 /* myAppUIKit */ = {
 			isa = PBXGroup;
 			children = (
+				62CC496625CF49990050B7F3 /* Model */,
 				6293474225C7D0B400D2FAB4 /* Utility */,
 				624D3DD425C74D40006D5837 /* AppDelegate.swift */,
 				624D3DD625C74D40006D5837 /* SceneDelegate.swift */,
@@ -143,6 +146,14 @@
 				6293474B25C7E27800D2FAB4 /* UITextView+Additions.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		62CC496625CF49990050B7F3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				62CC496125CF49920050B7F3 /* NewsData.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,6 +292,7 @@
 				624D3DD725C74D40006D5837 /* SceneDelegate.swift in Sources */,
 				6293474C25C7E27800D2FAB4 /* UITextView+Additions.swift in Sources */,
 				6293474425C7D0CE00D2FAB4 /* UITextViewPlaceholder.swift in Sources */,
+				62CC496225CF49920050B7F3 /* NewsData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

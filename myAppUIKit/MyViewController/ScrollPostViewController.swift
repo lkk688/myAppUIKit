@@ -6,14 +6,52 @@
 //
 
 import UIKit
+import PhotosUI //for PHPicker
 
-class ScrollPostViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
+class ScrollPostViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, PHPickerViewControllerDelegate {
+
+    
     @IBOutlet weak var titleTxtfield: UITextField!
     @IBOutlet weak var nameTxtfield: UITextField!
     @IBOutlet weak var storyTextview: UITextView!
     @IBOutlet weak var scrollview: UIScrollView!
+    @IBOutlet weak var imgview: UIImageView!
     
     weak var activeField: UIView? //UITextField?
+    
+    //MARK: SelectImage
+    @IBAction func selectImage(_ sender: UITapGestureRecognizer) {
+        print("selectImage")
+        //Dismiss the keyboard
+        storyTextview.resignFirstResponder()
+        
+        var configuration = PHPickerConfiguration()
+        configuration.selectionLimit = 1 //0 to mean unlimited
+        configuration.filter = .images
+        
+        let picker = PHPickerViewController(configuration: configuration)
+        picker.delegate = self
+        present(picker, animated: true)
+        
+    }
+    
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        dismiss(animated: true)
+        
+        if let itemProvider = results.first?.itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {
+            //let previousImage = imgview.image
+            itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, error in
+                DispatchQueue.main.async {
+                    guard let self = self, let image = image as? UIImage else {
+                        print(error ?? "Cannot load image")
+                        return
+                    }
+                    self.imgview.image = image
+                }
+                
+            }
+        }
+    }
     
     @IBAction func addBtn(_ sender: UIButton) {
         
@@ -44,6 +82,8 @@ class ScrollPostViewController: UIViewController, UITextFieldDelegate, UITextVie
 
         // Do any additional setup after loading the view.
         storyTextview.delegate = self
+        
+        scrollview.keyboardDismissMode = .onDrag //drag to dismiss the keyboard
         
         titleTxtfield.delegate = self
         titleTxtfield.tag = 0
