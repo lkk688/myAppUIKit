@@ -7,10 +7,12 @@
 
 import UIKit
 import PhotosUI //for PHPicker
+import os.log
 
 class ScrollPostViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, PHPickerViewControllerDelegate {
-
     
+    var newsdata: NewsData?
+
     @IBOutlet weak var titleTxtfield: UITextField!
     @IBOutlet weak var nameTxtfield: UITextField!
     @IBOutlet weak var storyTextview: UITextView!
@@ -19,7 +21,14 @@ class ScrollPostViewController: UIViewController, UITextFieldDelegate, UITextVie
     
     weak var activeField: UIView? //UITextField?
     
-    //MARK: SelectImage
+    // MARK: - Barbutton handling
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBAction func cancelButton(_ sender: UIBarButtonItem) {
+    }
+    
+    
+    
+    //MARK: SelectImage in the form
     @IBAction func selectImage(_ sender: UITapGestureRecognizer) {
         print("selectImage")
         //Dismiss the keyboard
@@ -53,6 +62,7 @@ class ScrollPostViewController: UIViewController, UITextFieldDelegate, UITextVie
         }
     }
     
+    //MARK: Add button in the form
     @IBAction func addBtn(_ sender: UIButton) {
         
         // Create the action buttons for the alert.
@@ -109,6 +119,7 @@ class ScrollPostViewController: UIViewController, UITextFieldDelegate, UITextVie
                 name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
+    //MARK: keyboard handling
     @objc func keyboardDidShow(notification:NSNotification) {
         let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
         guard let activeField = activeField, let keyboardHeight = keyboardSize?.height else { return }
@@ -137,16 +148,23 @@ class ScrollPostViewController: UIViewController, UITextFieldDelegate, UITextVie
         }
     
 
-    /*
-    // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        super.prepare(for: segue, sender: sender)
+        
+        // Configure the destination view controller only when the save button is pressed.
+        guard let button = sender as? UIBarButtonItem, button === saveButton else {
+            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+            return
+        }
+        newsdata = NewsData.init(identifier: 1, title: titleTxtfield.text ?? "No title", name: nameTxtfield.text, story: storyTextview.text, photo: "Image1", rating: 0, weblink: nil, coordinate: nil)
     }
-    */
     
+    
+    // MARK: - TextField handling
     //You need to specify that the text field should resign its first-responder status when the user taps a button to end editing in the text field. You do this in the textFieldShouldReturn(_:) method, (called when the user taps Return on the keyboard)
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         //textField.resignFirstResponder()
@@ -180,6 +198,7 @@ class ScrollPostViewController: UIViewController, UITextFieldDelegate, UITextVie
         activeField = textField
     }
     
+    // MARK: - Textview handling
     //Tells the delegate when editing of the specified text view begins.
     func textViewDidBeginEditing(_ textView: UITextView) {
         activeField = textView
