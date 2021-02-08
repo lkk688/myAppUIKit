@@ -12,6 +12,8 @@ import os.log
 class ScrollPostViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, PHPickerViewControllerDelegate {
     
     var newsdata: NewsData?
+    
+    var textViewheight: CGFloat = 0
 
     @IBOutlet weak var titleTxtfield: UITextField!
     @IBOutlet weak var nameTxtfield: UITextField!
@@ -24,6 +26,7 @@ class ScrollPostViewController: UIViewController, UITextFieldDelegate, UITextVie
     // MARK: - Barbutton handling
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBAction func cancelButton(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
     }
     
     
@@ -100,6 +103,8 @@ class ScrollPostViewController: UIViewController, UITextFieldDelegate, UITextVie
         nameTxtfield.delegate = self
         nameTxtfield.tag = 1
         
+        updateSaveButtonState()
+        
         //storyTextview.placeholder = "Enter your story"
         storyTextview.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
         storyTextview.backgroundColor = .secondarySystemBackground
@@ -160,7 +165,7 @@ class ScrollPostViewController: UIViewController, UITextFieldDelegate, UITextVie
             os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
             return
         }
-        newsdata = NewsData.init(identifier: 1, title: titleTxtfield.text ?? "No title", name: nameTxtfield.text, story: storyTextview.text, photo: "Image1", rating: 0, weblink: nil, coordinate: nil)
+        newsdata = NewsData.init(identifier: 1, title: titleTxtfield.text ?? "No title", name: nameTxtfield.text, story: storyTextview.text, photo: imgview.image, rating: 0, weblink: nil, coordinate: nil)
     }
     
     
@@ -192,10 +197,21 @@ class ScrollPostViewController: UIViewController, UITextFieldDelegate, UITextVie
     func textFieldDidEndEditing(_ textField: UITextField) {
         print(textField.text ?? "  ")
         activeField = nil
+        
+        updateSaveButtonState()
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         activeField = textField
+        
+        // Disable the Save button while editing.
+        saveButton.isEnabled = false
+    }
+    
+    private func updateSaveButtonState() {
+        // Disable the Save button if the text field is empty.
+        let text = titleTxtfield.text ?? ""
+        saveButton.isEnabled = !text.isEmpty
     }
     
     // MARK: - Textview handling
@@ -210,14 +226,15 @@ class ScrollPostViewController: UIViewController, UITextFieldDelegate, UITextVie
     }
     
     func textViewDidChange(_ textView: UITextView) {
-        if activeField != nil {
-            if textView.contentSize.height >= 50 && textView.contentSize.height <= activeField!.bounds.height
+        if activeField != nil && textViewheight>0 {
+            if textView.contentSize.height > textViewheight && textView.contentSize.height <= activeField!.bounds.height
             {
                 var activeRect = activeField!.convert(activeField!.bounds,to: scrollview)
                 activeRect.size.height = textView.contentSize.height
                 scrollview.scrollRectToVisible(activeRect, animated: true)
             }
         }
+        textViewheight = textView.contentSize.height
     }
     
 

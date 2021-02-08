@@ -31,16 +31,16 @@ class myAppUIKitTests: XCTestCase {
     }
     
     func testDataModelInitializationSucceeds() {
-        let zeroRating = NewsData.init(identifier: 1, title: "testing", name: "me", story: "test the story", photo: "Image1", rating: 3, weblink: URL(string: "www.google.com"), coordinate: nil)
+        let zeroRating = NewsData.init(identifier: 1, title: "testing", name: "me", story: "test the story", photo: nil, rating: 3, weblink: URL(string: "www.google.com"), coordinate: nil)
         XCTAssertNotNil(zeroRating)
     }
     
     func testDataModelInitializationFails() {
-        let negativeRating = NewsData.init(identifier: 1, title: "testing", name: "me", story: "test the story", photo: "Image1", rating: -1, weblink: URL(string: "www.google.com"), coordinate: nil)
+        let negativeRating = NewsData.init(identifier: 1, title: "testing", name: "me", story: "test the story", photo: nil, rating: -1, weblink: URL(string: "www.google.com"), coordinate: nil)
         XCTAssertNil(negativeRating)
         
         // Empty title String
-        let emptyString = NewsData.init(identifier: 1, title: "", name: "me", story: "test the story", photo: "Image1", rating: -1, weblink: URL(string: "www.google.com"), coordinate: nil)
+        let emptyString = NewsData.init(identifier: 1, title: "", name: "me", story: "test the story", photo: nil, rating: -1, weblink: URL(string: "www.google.com"), coordinate: nil)
         XCTAssertNil(emptyString)
     }
     
