@@ -508,6 +508,9 @@
                                                             <rect key="frame" x="120" y="0.0" width="110" height="53"/>
                                                             <color key="backgroundColor" systemColor="systemGreenColor"/>
                                                             <state key="normal" title="View Map"/>
+                                                            <connections>
+                                                                <segue destination="o0D-Bx-r8H" kind="modal" identifier="showMap" id="Wsg-fr-cVd"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HB5-40-L4N">
                                                             <rect key="frame" x="240" y="0.0" width="110" height="53"/>
@@ -544,11 +547,57 @@
                         <outlet property="storylabel" destination="e3Z-nT-YLO" id="ckG-A0-sjJ"/>
                         <outlet property="tableview" destination="cuU-ld-juR" id="QQU-oL-9ZP"/>
                         <outlet property="tilename" destination="ZWo-zu-rb7" id="tIG-w0-Fjf"/>
+                        <outlet property="webutton" destination="HB5-40-L4N" id="vmP-U2-vd7"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tQ2-dC-d1j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3696.9230769230767" y="164.92890995260663"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="ijB-pM-yRk">
+            <objects>
+                <viewController id="o0D-Bx-r8H" customClass="MapViewController" customModule="myAppUIKit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kkk-FP-ECm">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Eyb-dN-ElC">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="756"/>
+                            </mapView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VPh-rL-ZwL">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="56"/>
+                                <items>
+                                    <navigationItem title="Map" id="hPA-ld-ubx">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="9MU-gc-Wcx">
+                                            <connections>
+                                                <action selector="doneBtn:" destination="o0D-Bx-r8H" id="vqu-CD-uNA"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ejK-kH-3bK"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Eyb-dN-ElC" firstAttribute="top" secondItem="VPh-rL-ZwL" secondAttribute="top" id="1LV-Ms-jGa"/>
+                            <constraint firstItem="VPh-rL-ZwL" firstAttribute="leading" secondItem="ejK-kH-3bK" secondAttribute="leading" id="KIK-jT-LpJ"/>
+                            <constraint firstItem="Eyb-dN-ElC" firstAttribute="bottom" secondItem="ejK-kH-3bK" secondAttribute="bottom" id="LIU-ZQ-grP"/>
+                            <constraint firstItem="VPh-rL-ZwL" firstAttribute="top" secondItem="ejK-kH-3bK" secondAttribute="top" id="M4x-SZ-GGB"/>
+                            <constraint firstItem="VPh-rL-ZwL" firstAttribute="trailing" secondItem="ejK-kH-3bK" secondAttribute="trailing" id="lZI-Mw-3EX"/>
+                            <constraint firstItem="Eyb-dN-ElC" firstAttribute="leading" secondItem="ejK-kH-3bK" secondAttribute="leading" id="mDW-Ah-o9y"/>
+                            <constraint firstItem="Eyb-dN-ElC" firstAttribute="trailing" secondItem="ejK-kH-3bK" secondAttribute="trailing" id="spl-7o-Ol4"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="cqq-cC-Bde"/>
+                    <connections>
+                        <outlet property="mapView" destination="Eyb-dN-ElC" id="ah5-rY-Kdv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zhl-0Z-qcP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4560" y="164.92890995260663"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gcy-rh-k8T">

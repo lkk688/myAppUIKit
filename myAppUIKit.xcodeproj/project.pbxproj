@@ -24,6 +24,7 @@
 		62CC498C25CF9DBF0050B7F3 /* localdata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62CC498B25CF9DBF0050B7F3 /* localdata.plist */; };
 		62CC49C325D0C44B0050B7F3 /* StretchyTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CC49C225D0C44B0050B7F3 /* StretchyTableHeaderView.swift */; };
 		62CC49C825D0C5570050B7F3 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CC49C725D0C5570050B7F3 /* DetailTableViewController.swift */; };
+		62CC49CD25D12B7C0050B7F3 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CC49CC25D12B7C0050B7F3 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		62CC498B25CF9DBF0050B7F3 /* localdata.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = localdata.plist; sourceTree = "<group>"; };
 		62CC49C225D0C44B0050B7F3 /* StretchyTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StretchyTableHeaderView.swift; sourceTree = "<group>"; };
 		62CC49C725D0C5570050B7F3 /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
+		62CC49CC25D12B7C0050B7F3 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 				6293477925CA052600D2FAB4 /* ScrollPostViewController.swift */,
 				62CC498025CF6A4A0050B7F3 /* ListTableViewController.swift */,
 				62CC49C725D0C5570050B7F3 /* DetailTableViewController.swift */,
+				62CC49CC25D12B7C0050B7F3 /* MapViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				624D3DD725C74D40006D5837 /* SceneDelegate.swift in Sources */,
 				6293474C25C7E27800D2FAB4 /* UITextView+Additions.swift in Sources */,
 				6293474425C7D0CE00D2FAB4 /* UITextViewPlaceholder.swift in Sources */,
+				62CC49CD25D12B7C0050B7F3 /* MapViewController.swift in Sources */,
 				62CC49C325D0C44B0050B7F3 /* StretchyTableHeaderView.swift in Sources */,
 				62CC498125CF6A4A0050B7F3 /* ListTableViewController.swift in Sources */,
 				62CC496225CF49920050B7F3 /* NewsData.swift in Sources */,

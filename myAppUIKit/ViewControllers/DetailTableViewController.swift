@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import SafariServices
 
-class DetailTableViewController: UITableViewController {
+class DetailTableViewController: UITableViewController, SFSafariViewControllerDelegate, UIViewControllerTransitioningDelegate {
 
     @IBOutlet weak var tableview: UITableView!
     
@@ -18,12 +19,29 @@ class DetailTableViewController: UITableViewController {
     @IBOutlet weak var locationlabel: UILabel!
     @IBOutlet weak var ratingvalue: UILabel!
     
+    @IBOutlet weak var webutton: UIButton!
+    
     var newsdata: NewsData?
+    private var weblink : URL?
     
     @IBAction func submitRating(_ sender: UIButton) {
     }
+    
     @IBAction func weblink(_ sender: UIButton) {
+        if (weblink != nil) {
+            let safariVC = SFSafariViewController(url: weblink!)
+            safariVC.delegate = self
+            safariVC.transitioningDelegate = self //solution to present safari modally instead of push, need to add UIViewControllerTransitioningDelegate
+            present(safariVC, animated: true, completion: nil)
+        }else {
+            print("No weblink")
+        }
     }
+    //Tells the delegate that the user dismissed the view.
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+      controller.dismiss(animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,6 +53,13 @@ class DetailTableViewController: UITableViewController {
             storylabel.text = newsdata.story
             authorname.text = newsdata.name
             ratingvalue.text = String(repeating: "★", count: newsdata.rating)
+            if (newsdata.weblink != nil) {
+                self.weblink = newsdata.weblink
+                webutton.isEnabled = true
+            }else{
+                webutton.isEnabled = false
+            }
+        
 //            locationlabel.text = "latitude : \(String(describing: newsdata.coordinate?.latitude ?? "")) - longitude : \(String(describing: newsdata.coordinate?.longitude ?? ""))"
         }
         self.tableView.tableHeaderView = headerView
@@ -55,6 +80,7 @@ class DetailTableViewController: UITableViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.navigationBar.tintColor = .blue//.white  //change the back button color
+        
     }
 
     // MARK: - Table view data source
@@ -114,15 +140,25 @@ class DetailTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        switch segue.identifier! {
+            case "showMap":
+                guard let mapViewController = segue.destination as? MapViewController else {
+                    fatalError("Unexpected destination: \(segue.destination)")
+                }
+                mapViewController.locationToShow = newsdata!.coordinate
+                mapViewController.title = "Map"//newsdata!.name
+            default:
+              fatalError("Unhandled Segue: \(segue.identifier!)")
+        }
     }
-    */
+    
 
 }
 
@@ -133,3 +169,4 @@ extension DetailTableViewController {
         headerView.scrollViewDidScroll(scrollView: scrollView)
     }
 }
+
