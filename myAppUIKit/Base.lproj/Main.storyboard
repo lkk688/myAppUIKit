@@ -484,10 +484,33 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Submit your rating" id="yNQ-Cr-8zF">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="53" id="6NI-SS-VhT">
+                                        <rect key="frame" x="20" y="385.66667175292969" width="350" height="53"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6NI-SS-VhT" id="RwU-Kd-hpH">
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="53"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dmx-Vl-Vn9" customClass="RatingControl" customModule="myAppUIKit" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="53"/>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="dmx-Vl-Vn9" secondAttribute="trailing" id="1zq-41-JIk"/>
+                                                <constraint firstItem="dmx-Vl-Vn9" firstAttribute="top" secondItem="RwU-Kd-hpH" secondAttribute="top" id="5sR-Vn-ld2"/>
+                                                <constraint firstAttribute="bottom" secondItem="dmx-Vl-Vn9" secondAttribute="bottom" id="DoU-0M-knJ"/>
+                                                <constraint firstItem="dmx-Vl-Vn9" firstAttribute="leading" secondItem="RwU-Kd-hpH" secondAttribute="leading" id="nJJ-Lz-2c1"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection id="iNt-fV-cnN">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="53" id="IzP-vI-FUT">
-                                        <rect key="frame" x="20" y="365.66667175292969" width="350" height="53"/>
+                                        <rect key="frame" x="20" y="474.66667175292969" width="350" height="53"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IzP-vI-FUT" id="TNB-oe-G7c">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="53"/>
@@ -496,16 +519,8 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="UdC-38-0WM">
                                                     <rect key="frame" x="0.0" y="0.0" width="350" height="53"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yTC-H1-UoA">
-                                                            <rect key="frame" x="0.0" y="0.0" width="110" height="53"/>
-                                                            <color key="backgroundColor" systemColor="systemOrangeColor"/>
-                                                            <state key="normal" title="Submit Rating"/>
-                                                            <connections>
-                                                                <action selector="submitRating:" destination="nex-NO-Zlp" eventType="touchUpInside" id="tgP-t9-raV"/>
-                                                            </connections>
-                                                        </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sln-bt-39y">
-                                                            <rect key="frame" x="120" y="0.0" width="110" height="53"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="170" height="53"/>
                                                             <color key="backgroundColor" systemColor="systemGreenColor"/>
                                                             <state key="normal" title="View Map"/>
                                                             <connections>
@@ -513,7 +528,7 @@
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HB5-40-L4N">
-                                                            <rect key="frame" x="240" y="0.0" width="110" height="53"/>
+                                                            <rect key="frame" x="180" y="0.0" width="170" height="53"/>
                                                             <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                             <state key="normal" title="Web"/>
                                                             <connections>
@@ -543,6 +558,7 @@
                     <connections>
                         <outlet property="authorname" destination="zXS-bu-UoG" id="meU-db-sWQ"/>
                         <outlet property="locationlabel" destination="a92-S5-68P" id="WWn-UX-8BH"/>
+                        <outlet property="ratingControl" destination="dmx-Vl-Vn9" id="fPS-hF-zDc"/>
                         <outlet property="ratingvalue" destination="BF5-5t-jr0" id="cZy-py-mPK"/>
                         <outlet property="storylabel" destination="e3Z-nT-YLO" id="ckG-A0-sjJ"/>
                         <outlet property="tableview" destination="cuU-ld-juR" id="QQU-oL-9ZP"/>
@@ -647,9 +663,6 @@
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

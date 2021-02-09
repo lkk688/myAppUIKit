@@ -131,9 +131,19 @@ class ListTableViewController: UITableViewController {
     
     @IBAction func unwindToList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? ScrollPostViewController, let prevdata=sourceViewController.newsdata {
-            let newIndexPath = IndexPath(row: mydata.count, section: 0)
-            mydata.append(prevdata)
-            tableView.insertRows(at: [newIndexPath], with: .automatic)
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                //This code checks whether a row in the table view is selected.
+                mydata[selectedIndexPath.row] = prevdata
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+            }
+            else {
+                let newIndexPath = IndexPath(row: mydata.count, section: 0)
+                mydata.append(prevdata)
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }
+//            let newIndexPath = IndexPath(row: mydata.count, section: 0)
+//            mydata.append(prevdata)
+//            tableView.insertRows(at: [newIndexPath], with: .automatic)
         }
     }
 

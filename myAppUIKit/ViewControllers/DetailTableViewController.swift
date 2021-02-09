@@ -18,14 +18,13 @@ class DetailTableViewController: UITableViewController, SFSafariViewControllerDe
     
     @IBOutlet weak var locationlabel: UILabel!
     @IBOutlet weak var ratingvalue: UILabel!
+    @IBOutlet weak var ratingControl: RatingControl!
     
     @IBOutlet weak var webutton: UIButton!
     
     var newsdata: NewsData?
     private var weblink : URL?
     
-    @IBAction func submitRating(_ sender: UIButton) {
-    }
     
     @IBAction func weblink(_ sender: UIButton) {
         if (weblink != nil) {
@@ -44,6 +43,8 @@ class DetailTableViewController: UITableViewController, SFSafariViewControllerDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ratingControl.delegate = self
         
         let headerView = StretchyTableHeaderView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 250))
         //load input data
@@ -170,3 +171,12 @@ extension DetailTableViewController {
     }
 }
 
+extension DetailTableViewController: RatingDelegate {
+    func RatingbuttonClicked(value: Int) {
+        print("New rating value: \(value)")
+        ratingvalue.text = String(repeating: "★", count: value)
+        newsdata!.rating = value
+        
+    }
+    
+}

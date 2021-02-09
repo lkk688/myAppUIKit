@@ -25,6 +25,7 @@
 		62CC49C325D0C44B0050B7F3 /* StretchyTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CC49C225D0C44B0050B7F3 /* StretchyTableHeaderView.swift */; };
 		62CC49C825D0C5570050B7F3 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CC49C725D0C5570050B7F3 /* DetailTableViewController.swift */; };
 		62CC49CD25D12B7C0050B7F3 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CC49CC25D12B7C0050B7F3 /* MapViewController.swift */; };
+		62CC49D225D26EEE0050B7F3 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CC49D125D26EEE0050B7F3 /* RatingControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		62CC49C225D0C44B0050B7F3 /* StretchyTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StretchyTableHeaderView.swift; sourceTree = "<group>"; };
 		62CC49C725D0C5570050B7F3 /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 		62CC49CC25D12B7C0050B7F3 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		62CC49D125D26EEE0050B7F3 /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 			children = (
 				62CC496A25CF62080050B7F3 /* DataTableViewCell.swift */,
 				62CC49C225D0C44B0050B7F3 /* StretchyTableHeaderView.swift */,
+				62CC49D125D26EEE0050B7F3 /* RatingControl.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				62CC49CD25D12B7C0050B7F3 /* MapViewController.swift in Sources */,
 				62CC49C325D0C44B0050B7F3 /* StretchyTableHeaderView.swift in Sources */,
 				62CC498125CF6A4A0050B7F3 /* ListTableViewController.swift in Sources */,
+				62CC49D225D26EEE0050B7F3 /* RatingControl.swift in Sources */,
 				62CC496225CF49920050B7F3 /* NewsData.swift in Sources */,
 				62CC496B25CF62080050B7F3 /* DataTableViewCell.swift in Sources */,
 			);
