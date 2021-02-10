@@ -44,6 +44,11 @@ class DetailTableViewController: UITableViewController, SFSafariViewControllerDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //custom back button
+        self.navigationItem.hidesBackButton = true
+        let newBackButton = UIBarButtonItem(title: "< Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(DetailTableViewController.back(sender:)))
+        self.navigationItem.leftBarButtonItem = newBackButton
+        
         ratingControl.delegate = self
         
         let headerView = StretchyTableHeaderView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 250))
@@ -53,7 +58,11 @@ class DetailTableViewController: UITableViewController, SFSafariViewControllerDe
             tilename.text = newsdata.title
             storylabel.text = newsdata.story
             authorname.text = newsdata.name
-            ratingvalue.text = String(repeating: "★", count: newsdata.rating)
+            if newsdata.rating != 0 {
+                ratingvalue.text = String(repeating: "★", count: newsdata.rating)
+            }else{
+                ratingvalue.text = "No rating"
+            }
             if (newsdata.weblink != nil) {
                 self.weblink = newsdata.weblink
                 webutton.isEnabled = true
@@ -71,6 +80,15 @@ class DetailTableViewController: UITableViewController, SFSafariViewControllerDe
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    //Custom back button
+    @objc func back(sender: UIBarButtonItem) {
+            // Perform your custom actions
+            // ...
+        self.performSegue(withIdentifier: "returnback", sender: self)
+            // Go back to the previous ViewController
+        //_ = navigationController?.popViewController(animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -155,6 +173,10 @@ class DetailTableViewController: UITableViewController, SFSafariViewControllerDe
                 }
                 mapViewController.locationToShow = newsdata!.coordinate
                 mapViewController.title = "Map"//newsdata!.name
+                break
+            case "returnback":
+                print("return back")
+                break
             default:
               fatalError("Unhandled Segue: \(segue.identifier!)")
         }

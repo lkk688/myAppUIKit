@@ -564,9 +564,11 @@
                         <outlet property="tableview" destination="cuU-ld-juR" id="QQU-oL-9ZP"/>
                         <outlet property="tilename" destination="ZWo-zu-rb7" id="tIG-w0-Fjf"/>
                         <outlet property="webutton" destination="HB5-40-L4N" id="vmP-U2-vd7"/>
+                        <segue destination="zW5-HZ-lVu" kind="unwind" identifier="returnback" unwindAction="unwindToListWithSender:" id="QfK-Gg-A9Q"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tQ2-dC-d1j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="zW5-HZ-lVu" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3696.9230769230767" y="164.92890995260663"/>
         </scene>
