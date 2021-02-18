@@ -74,7 +74,7 @@ class ListTableViewController: UITableViewController {
             // Delete the row from the data source
             mydata.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            //saveMyData()
+            NewsData.saveMyData(mydata: mydata)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
@@ -142,6 +142,7 @@ class ListTableViewController: UITableViewController {
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
             }
         }
+        NewsData.saveMyData(mydata: mydata)
     }
 
 

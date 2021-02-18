@@ -12,7 +12,7 @@ class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     
-    var locationToShow: CLLocationCoordinate2D!
+    var locationToShow: Coordinate! //CLLocationCoordinate2D!
 
     @IBAction func doneBtn(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
@@ -21,13 +21,14 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        mapView.setCenter(locationToShow, animated: true)
+        let currentlocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: locationToShow.latitude, longitude: locationToShow.longitude)
+        mapView.setCenter(currentlocation, animated: true)
 
-        let zoomRegion = MKCoordinateRegion.init(center: locationToShow, latitudinalMeters: 15000, longitudinalMeters: 15000)
+        let zoomRegion = MKCoordinateRegion.init(center: currentlocation, latitudinalMeters: 15000, longitudinalMeters: 15000)
         mapView.setRegion(zoomRegion, animated: true)
 
         let annotation = MKPointAnnotation()
-        annotation.coordinate = locationToShow
+        annotation.coordinate = currentlocation
         mapView.addAnnotation(annotation)
         
     }
