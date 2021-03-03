@@ -1,7 +1,9 @@
 # myAppUIKit
-iOS UIKit sample code, Spring 2021
+SJSU CMPE277 iOS UIKit sample code, Spring 2021
 
 # Archived steps
+* [video playlist] (https://www.youtube.com/playlist?list=PL_8o25--oHQPaCIzrnYH0aI0tZrKZazoY)
+
 ## Step1
 Description: Create a project and simple stack view with multiple items
 * Project archive link: [myAppUIKit-1 start.zip](https://drive.google.com/file/d/1cTlK3GTk-f1xy_2VHdETB7bqe3ZWkEVN/view?usp=sharing)
